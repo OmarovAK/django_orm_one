@@ -1,0 +1,38 @@
+{% extends 'phonemarket/base.html' %}
+
+
+{% block main %}
+
+<div class="container">
+    <h1 class="font-monospace">Каталог</h1>
+    <div class="row">
+        <div class="col-sm-2">
+            <p class="mt-2">Сортировать по: </p>
+        </div>
+        <div class="col-sm">
+                  <ul class="list-group list-group-horizontal">
+                    <li style="border: None" class="list-group-item"><a href="{% url 'phones' %}?sort=name" style="text-decoration: None" class="link-primary">названию</a></li>
+                    <li style="border: None" class="list-group-item "><a href="{% url 'phones' %}?sort=price" style="text-decoration: None" class="link-primary">сначала дешевые</a></li>
+                    <li style="border: None" class="list-group-item "><a href="{% url 'phones' %}?sort=-price" style="text-decoration: None" class="link-primary">сначала дорогие</a></li>
+                 </ul>
+        </div>
+    </div>
+    <div class="row">
+        {% for phone in phones %}
+            <div class="col-sm text-center">
+                <h2 class="text-primary">{{phone.name}}</h2>
+                <p class="font-monospace">Цена: {{phone.price}}</p>
+                <img class="img-fluid" style="height: 450px" src="{{phone.image}}">
+                <p class="text-end mt-2"><a class="btn btn-danger" href="{% url 'detail_phone' phone.slug %}">Подробнее</a></p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+
+
+
+{% endblock main %}

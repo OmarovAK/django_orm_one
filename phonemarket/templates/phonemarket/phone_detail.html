@@ -1,0 +1,25 @@
+{% extends 'phonemarket/base.html' %}
+
+
+{% block main %}
+<h1 class="text-center text-primary">{{ phone.name }}</h1>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-sm">
+            <h2 class="text-center">Детали телефона</h2>
+            <p>Марка: {{ phone.name }}</p>
+            <p>Цена: {{ phone.price }}</p>
+            <p>Дата релиза: {{ phone.release_date }} </p>
+            <a href="{% url 'phones' %}" class="btn btn-primary">Назад</a>
+        </div>
+        <div  class="col-sm"><img style="height: 450px" src="{{phone.image}}" alt=""></div>
+    </div>
+</div>
+
+
+
+
+
+
+
+{% endblock main %}
