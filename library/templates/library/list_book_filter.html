@@ -1,0 +1,40 @@
+{% extends 'phonemarket/base.html' %}
+
+
+{% block main %}
+
+<div class="container">
+    <div class="row mb-2">
+        <div class="col-sm">
+            <h1 class="text-primary">Выборка на {{ now_date|date:"d E Y" }} г.</h1>
+        </div>
+    </div>
+   <div class="row mt-2">
+       {% for book in books %}
+       <div class="col-sm-4">
+           <h2 class="text-primary">{{book.name}}</h2>
+           <p>Автор: {{book.author}}</p>
+           <p>Дата публикации: {{book.date_pub}}</p>
+       </div>
+       {% endfor %}
+   </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+            {% if previous_date %}
+            <a class="btn btn-info text-light" href="{% url 'filter_date_books' previous_date %}">{{ previous_date }}</a>
+            {% endif %}
+        </div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            {% if next_date %}
+             <a class="btn btn-info text-light" href="{% url 'filter_date_books' next_date %}">{{ next_date }}</a>
+
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock main %}

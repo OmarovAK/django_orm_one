@@ -1,0 +1,27 @@
+{% extends 'phonemarket/base.html' %}
+
+
+{% block main %}
+
+<div class="container">
+    <div class="row mb-2">
+        <div class="col-sm">
+            <h1 class="text-primary">Каталог</h1>
+        </div>
+    </div>
+   <div class="row mt-2">
+       {% for book in books %}
+       <div class="col-sm-4">
+           <h2 class="text-primary">{{book.name}}</h2>
+           <p>Автор: {{book.author}}</p>
+           <p><a href="{% url 'filter_date_books' book.date_pub %}">Дата публикации: {{book.date_pub}} </a></p>
+       </div>
+       {% endfor %}
+   </div>
+
+
+
+</div>
+
+
+{% endblock main %}

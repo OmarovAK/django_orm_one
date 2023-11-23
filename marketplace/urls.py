@@ -16,11 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from library.views import list_books, filter_date
 from phonemarket.views import all_phones, phone_detail, list_pages
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('phones/', all_phones, name='phones'),
     path('phones/<slug:slug>/', phone_detail, name='detail_phone'),
-    path('', list_pages, name='home')
+    path('', list_pages, name='home'),
+    path('library/', list_books, name='list_books'),
+    path('library/<str:date_>', filter_date, name='filter_date_books')
 ]
